@@ -13,6 +13,17 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  //runs once when the widget is rendered
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  //runs when the widget is removed from the UI
+  void dispose() {
+    super.dispose();
+  }
+
   int count = 0;
   @override
   Widget build(BuildContext context) {
@@ -44,6 +55,7 @@ class _MyAppState extends State<MyApp> {
               count++;
             });
           },
+          child: const Icon(Icons.add),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const [
