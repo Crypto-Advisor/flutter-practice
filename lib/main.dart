@@ -5,9 +5,15 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int count = 0;
   @override
   Widget build(BuildContext context) {
     List colors = [Colors.red, Colors.blue, Colors.green];
@@ -24,12 +30,19 @@ class MyApp extends StatelessWidget {
               color: colors[random.nextInt(3)],
               width: 500,
               height: 500,
+              child: Center(
+                  child: Text(
+                '$count',
+                style: const TextStyle(fontSize: 60),
+              )),
             );
           },
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            print('pressed!');
+            setState(() {
+              count++;
+            });
           },
         ),
         bottomNavigationBar: BottomNavigationBar(
